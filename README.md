@@ -12,6 +12,7 @@
 - **AI as a complement to human expertise, not a replacement** — In many real-world settings, AI helps accelerate or augment human tasks (data processing, analytics, insight generation), but humans remain in the loop — especially for high-stakes decisions or where domain knowledge matters.
 <br>
 For someone with your background (master’s in data science + 4 years of experience), this means AI is already capable of accelerating and amplifying much of what you do: *preprocessing, exploratory data analysis, rapid prototyping, reporting,* and even parts of modeling.
+
 ---
 
 ### 🔭 What’s growing fast — near-term and mid-term AI capabilities
@@ -24,6 +25,7 @@ These are areas where interest, investment, and technical progress are currently
 - **Convergence with new computing paradigms** — AI increasingly intersects with advanced computing platforms: HPC (supercomputers), domain-specific hardware (GPUs, custom AI silicon), and potentially even quantum / neuromorphic computing — all to handle larger models, massive datasets, and computationally expensive simulations. [IBM+2Morgan Stanley+2](https://aaai.org/about-aaai/presidential-panel-on-the-future-of-ai-research/?utm_source=chatgpt.com)
 <br>
 Because of these trends, AI’s role is shifting: from a “tool” to a “collaborator.” Rather than just producing predictions or summaries, AI systems are increasingly being designed to drive decision-making, orchestrate workflows, and accelerate discovery.
+
 ---
 
 ## 📘 Lesson Plan: CS Foundations for Agentic + Multimodal AI (Python-Focused)
