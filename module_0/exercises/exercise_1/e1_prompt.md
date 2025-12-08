@@ -1,4 +1,4 @@
-🧪 Mini-Exercise
+### 🧪 Mini-Exercise
 
 Organize this single-file script into a package with a tools/ and processing/ folder:
 ```

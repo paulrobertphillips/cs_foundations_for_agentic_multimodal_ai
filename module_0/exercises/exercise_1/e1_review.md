@@ -3,7 +3,7 @@ Only **two very small issues** to fix:
 
 ---
 
-# ✅ 1. Folder structure looks perfect
+### ✅ 1. Folder structure looks perfect
 
 Your hierarchy is clear and matches the assignment exactly:
 
@@ -24,7 +24,7 @@ my_project/
 
 ---
 
-# ❗ 2. Minor correction: a typo in your import statement
+### ❗ 2. Minor correction: a typo in your import statement
 
 In **main.py**, you wrote:
 
@@ -42,7 +42,7 @@ from processing.data_tools import filter_rows
 
 ---
 
-# ❗ 3. Minor style note (not required, but best practice)
+### ❗ 3. Minor style note (not required, but best practice)
 
 Inside **data_tools.py**, the function is:
 
@@ -111,17 +111,17 @@ print(filter_rows(rows))
 
 ---
 
-# 🎉 Excellent work
+### 🎉 Excellent work
 
 If you want, we can now:
 
-### → Move to **Module 0.2**
+#### → Move to **Module 0.2**
 
 **Virtual environments & dependency management**
 
 or
 
-### → Build a **slightly larger package** to reinforce Module 0.1
+#### → Build a **slightly larger package** to reinforce Module 0.1
 
 (e.g., add a `writers/` module, or add validation)
 
