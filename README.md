@@ -10,17 +10,19 @@
 - **AI-assisted data science workflows** — Tools are emerging that help automate multiple parts of the data science lifecycle: data cleaning, exploratory analysis, visualization, feature engineering, even initial modeling. A recent survey of “data-science agents” shows many systems already support exploratory analysis, modeling, and visualization. [arXiv](https://arxiv.org/abs/2510.04023?utm_source=chatgpt.com)
 - **Enterprise-scale adoption still limited but growing** — According to the most recent industry surveys, many companies remain in “experiment / pilot” mode; only a subset (~one-third) report truly scaling AI across business functions. [McKinsey & Company+1](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai?utm_source=chatgpt.com)
 - **AI as a complement to human expertise, not a replacement** — In many real-world settings, AI helps accelerate or augment human tasks (data processing, analytics, insight generation), but humans remain in the loop — especially for high-stakes decisions or where domain knowledge matters.
+<br>
 For someone with your background (master’s in data science + 4 years of experience), this means AI is already capable of accelerating and amplifying much of what you do: *preprocessing, exploratory data analysis, rapid prototyping, reporting,* and even parts of modeling.
 ---
 
 ### 🔭 What’s growing fast — near-term and mid-term AI capabilities
 
-These are areas where interest, investment, and technical progress are currently accelerating — and likely to define the next 5–10 years.
-- Agentic / autonomous AI (“AI agents”) — Rather than just generating text or predictions, “agentic AI” refers to systems that can plan, reason, and act on workflows — selecting tools, chaining tasks, even making decisions across multiple steps. This is one of the biggest trends of 2025. [Source+2ABI Research+2](https://news.microsoft.com/source/features/ai/6-ai-trends-youll-see-more-of-in-2025/?utm_source=chatgpt.com)
-- AI for science / research workflows (“AI for Science” / “Agentic Science”) — Especially with initiatives like Genesis, AI is evolving beyond business analytics into autonomous scientific discovery: hypothesis generation, experimental planning, simulation, analysis, iteration. [arXiv+2Science Business+2](https://arxiv.org/abs/2508.14111?utm_source=chatgpt.com)
-- Multimodal AI & integrated workflows — AI that can work across text, tables, images, simulations, structured data etc., enabling richer insights and more complex workflows (e.g., combining sensor data, code, domain-specific datasets, scientific instrumentation). [arXiv+2IBM+2](https://arxiv.org/abs/2510.04023?utm_source=chatgpt.com)
+These are areas where interest, investment, and technical progress are currently accelerating — and likely to define the next **5–10 years**.
+- **Agentic / autonomous AI (“AI agents”)** — Rather than just generating text or predictions, “agentic AI” refers to systems that can plan, reason, and act on workflows — selecting tools, chaining tasks, even making decisions across multiple steps. This is one of the biggest trends of 2025. [Source+2ABI Research+2](https://news.microsoft.com/source/features/ai/6-ai-trends-youll-see-more-of-in-2025/?utm_source=chatgpt.com)
+- **AI for science / research workflows (“AI for Science” / “Agentic Science”)** — Especially with initiatives like Genesis, AI is evolving beyond business analytics into autonomous scientific discovery: hypothesis generation, experimental planning, simulation, analysis, iteration. [arXiv+2Science Business+2](https://arxiv.org/abs/2508.14111?utm_source=chatgpt.com)
+- **Multimodal AI & integrated workflows** — AI that can work across text, tables, images, simulations, structured data etc., enabling richer insights and more complex workflows (e.g., combining sensor data, code, domain-specific datasets, scientific instrumentation). [arXiv+2IBM+2](https://arxiv.org/abs/2510.04023?utm_source=chatgpt.com)
 - Data-centric, privacy-aware, and governance-aware AI — As AI adoption grows, so does the attention on data quality, governance, reproducibility, and ethical/responsible AI. That means better tools for data lineage, bias detection, privacy preservation, and compliance. A[AAI+2IBM+2](https://aaai.org/about-aaai/presidential-panel-on-the-future-of-ai-research/?utm_source=chatgpt.com)
-- Convergence with new computing paradigms — AI increasingly intersects with advanced computing platforms: HPC (supercomputers), domain-specific hardware (GPUs, custom AI silicon), and potentially even quantum / neuromorphic computing — all to handle larger models, massive datasets, and computationally expensive simulations. [IBM+2Morgan Stanley+2](https://aaai.org/about-aaai/presidential-panel-on-the-future-of-ai-research/?utm_source=chatgpt.com)
+- **Convergence with new computing paradigms** — AI increasingly intersects with advanced computing platforms: HPC (supercomputers), domain-specific hardware (GPUs, custom AI silicon), and potentially even quantum / neuromorphic computing — all to handle larger models, massive datasets, and computationally expensive simulations. [IBM+2Morgan Stanley+2](https://aaai.org/about-aaai/presidential-panel-on-the-future-of-ai-research/?utm_source=chatgpt.com)
+<br>
 Because of these trends, AI’s role is shifting: from a “tool” to a “collaborator.” Rather than just producing predictions or summaries, AI systems are increasingly being designed to drive decision-making, orchestrate workflows, and accelerate discovery.
 ---
 
@@ -36,7 +38,7 @@ Even before CS concepts, agentic systems rely heavily on clean, modular Python.
 
 🔑 Topics
 
-- Python packaging basics (__init__.py, modules, imports)
+- Python packaging basics (`__init__.py`, modules, imports)
 - Virtual environments & dependency management
 - Python dataclasses (hugely useful in agent & tool definitions)
 - Type hints + Pydantic models (common in agent frameworks)
@@ -185,7 +187,7 @@ Agentic AI relies heavily on tool calling, where the LLM calls a Python function
 
 - Function signatures
 - Keyword vs positional args
-- Type hints (List[str], Dict[str, Any], Optional[int])
+- Type hints (`List[str]`, `Dict[str, Any]`, `Optional[int]`)
 - Decorators (common for tool registration)
 - JSON schemas (again)
 - Argument validation
@@ -284,7 +286,7 @@ This aligns directly with where Genesis and DOE ecosystems are headed.
 
 If you want immediate impact and to be able to read agent code quickly:
 
-Start With These (2–3 weeks):
+Start With These (**2–3 weeks**):
 
 1. Clean Python architecture: modules, dataclasses, type hints
 2. Pydantic models & JSON schemas
