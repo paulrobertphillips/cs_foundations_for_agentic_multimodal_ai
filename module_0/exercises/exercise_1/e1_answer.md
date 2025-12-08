@@ -1,6 +1,5 @@
-````markdown
-
 **folder structure**
+```
 my_project/
     main.py
     tools/
@@ -9,6 +8,7 @@ my_project/
     processing/
         __init__.py
         data_tools.py
+```
 
 **tools/io_tools.py**
 ```python

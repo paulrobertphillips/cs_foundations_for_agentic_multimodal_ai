@@ -1,10 +1,16 @@
 ### 📌 Example: Create and use a virtual environment
 
+**If you run into issues here, please refer to the following location in the repository.**
+```
+resources/
+    documents/
+       Setting Up Python Natively On Machine.pdf 
+```
 
 1. Create a venv
 
 ```
-python3 -m venv .venv
+python -m venv .venv
 
 ```
 
