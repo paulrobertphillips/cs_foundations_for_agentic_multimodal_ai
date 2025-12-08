@@ -1,3 +1,5 @@
+# Module 0.1 — Python Packaging Basics
+
 ### 🧪 Mini-Exercise
 
 Organize this single-file script into a package with a tools/ and processing/ folder:

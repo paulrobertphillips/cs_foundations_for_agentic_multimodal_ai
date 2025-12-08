@@ -1,0 +1,27 @@
+[project]
+name = "my_project"
+version = "0.1.0"
+description = "A simple example package for practicing Module 0 tooling."
+authors = [
+    { name = "Your Name" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+
+# Dependencies your package needs at runtime
+dependencies = [
+    "pandas>=2.0",        # optional, but common for data tooling
+    "pydantic>=2.0",      # we will use later in Module 0
+]
+
+# This tells Python how to build/install your package
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# Optional: code formatting/linting tools for clean agents
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
