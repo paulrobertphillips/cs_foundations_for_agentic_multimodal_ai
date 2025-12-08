@@ -1,2 +1,277 @@
 # cs_foundations_for_agentic_multimodal_ai
-This repository is comprised of a targeted, practical lesson plan that teaches just enough CS needed to comfortably work with agentic and multimodal AI systems as a data scientist. It's intended to be a "bridge curriculum" for those transitioning into use of AI for data science. The content is a mix of generative AI content and personal notes.
+
+***The content of this repo is a mix of generative AI content and personal notes.***
+
+📘 Lesson Plan: CS Foundations for Agentic + Multimodal AI (Python-Focused)
+
+**This is designed to be practical first, theory-lite, and aligned with tasks you’ll actually do in hybrid data-science + AI-for-science workflows.**
+
+---
+
+MODULE 0 — Your Baseline: Python for Scalable, Readable AI Code
+
+Even before CS concepts, agentic systems rely heavily on clean, modular Python.
+
+🔑 Topics
+
+- Python packaging basics (__init__.py, modules, imports)
+- Virtual environments & dependency management
+- Python dataclasses (hugely useful in agent & tool definitions)
+- Type hints + Pydantic models (common in agent frameworks)
+- Async programming fundamentals (async/await)
+  — Agent frameworks often call tools asynchronously.
+
+🧪 Exercises
+
+- Rewrite a small script you’ve written using functions + modules.
+- Convert a data-cleaning script to async I/O for file/database reads.
+- Wrap an object using @dataclass to store parameters for a pipeline.
+---
+
+MODULE 1 — Algorithmic Thinking (But Only What You Need)
+
+
+Why this matters
+
+Agentic systems often:
+- plan sequences of actions
+- operate on graphs of tasks
+- search for optimal steps
+- recursively break down goals
+These rely on classic algorithms — but only a handful.
+
+🔑 Topics
+
+- Time/space complexity intuition (not full proofs)
+- Graph data structures (nodes, edges)
+- Search algorithms commonly used in agents:
+	- BFS, DFS
+	- A* search (planning)
+- Trees + recursion (agents recursively plan)
+- Dynamic programming (rare but helpful mentally)
+
+🧪 Exercises
+
+- Build a simple BFS yourself in Python.
+- Represent a “task graph” (EDA → model → evaluation → report) as a DAG.
+- Trace a recursive agent-style function (“break problem into subproblems”).
+---
+
+MODULE 2 — Software Engineering Patterns for AI Agents
+
+You don’t need full-blown SWE background, but agentic systems rely on certain patterns heavily.
+
+🔑 Topics
+
+- Modular design (functions + classes)
+- Design patterns most relevant to AI/tooling
+	- Factory pattern (build tools/agents dynamically)
+	- Strategy pattern (swap model/tool selection logic)
+	- Observer pattern (event hooks, logging, monitoring)
+	- Pipeline pattern (EDA → clean → visualize → model)
+- Error handling + robust scripting
+  (agents must respond gracefully to tool failures)
+- Logging (logging module), structured logs (JSON logs)
+
+🧪 Exercises
+
+- Build a tiny “tool” class + factory that loads different tools.
+- Implement a simple pipeline class where each step is modular.
+- Add robust try/except logic to a data-cleaning script.
+---
+
+MODULE 3 — Data Structures Modern Agents Use
+
+Agentic and multimodal systems move data between tools and models — meaning you’ll encounter structured data models everywhere.
+
+🔑 Python Structures
+
+- dict, nested dicts
+- lists of mixed types
+- custom classes
+- tuples and named tuples
+- queues/stacks (for agent planning loops)
+- priority queues (heapq)
+- graphs (via dict-of-lists or networkx)
+
+🔑 Third-party Structures
+
+- Pydantic models
+  (hugely common for tool definitions & agent outputs)
+- JSON schemas
+  (standard for describing tool inputs/outputs)
+- Message objects in LLM frameworks (OpenAI Assistants, LangChain, LlamaIndex)
+
+🧪 Exercises
+
+- Define a Pydantic model describing a multimodal input (text + file + metadata).
+- Simulate an agent’s task queue using queue.PriorityQueue.
+- Convert a nested JSON response from an LLM into dataclasses.
+---
+
+MODULE 4 — Concurrency & Parallelism (Agent Workflows Need This)
+
+Agents often:
+- run multiple tools concurrently
+- process multimodal inputs asynchronously
+- interact with external APIs
+You don’t need deep OS theory — just operational fluency.
+
+🔑 Topics
+
+- Threads vs processes
+- asyncio (the most useful for Python agent frameworks)
+- Event loops, tasks, futures
+- Producer/consumer patterns
+- Multiprocessing for CPU-heavy tasks (e.g., model inference)
+
+🧪 Exercises
+
+- Write an async function that queries two APIs at once.
+- Build a multiprocessing script that generates and evaluates features.
+- Implement a producer/consumer queue that mimics an agent receiving tasks.
+---
+
+MODULE 5 — API Literacy (Most Agents Are Glue Code)
+
+Most agent workflows talk to:
+- LLM APIs
+- database APIs
+- cloud services
+- data retrieval/storage systems
+
+🔑 Topics
+
+- REST API fundamentals
+- Authentication patterns (OAuth, API keys)
+- JSON serialization/deserialization
+- Request batching & rate limiting
+- Error codes + retries + backoff logic
+
+🧪 Exercises
+
+- Build a Python wrapper around a real API (e.g., GitHub, OpenAI).
+- Add retry logic using tenacity.
+- Parse a complex JSON API response into structured models.
+---
+
+MODULE 6 — Tools & Function Calling (Core of Agent Frameworks Now)
+
+Agentic AI relies heavily on tool calling, where the LLM calls a Python function with structured arguments.
+
+🔑 Topics
+
+- Function signatures
+- Keyword vs positional args
+- Type hints (List[str], Dict[str, Any], Optional[int])
+- Decorators (common for tool registration)
+- JSON schemas (again)
+- Argument validation
+
+🧪 Exercises
+
+- Create a @tool decorator that logs calls.
+- Define a function for data cleaning and register it as a “tool.”
+- Write code that converts model-structured outputs → function arguments.
+---
+
+MODULE 7 — Multimodal Data Handling & I/O
+
+Because multimodal systems deal with:
+- images
+- charts
+- tables
+- PDFs
+- embeddings
+- simulation outputs
+You’ll want comfort in:
+
+🔑 Topics
+
+- Using Pillow for images
+- Matplotlib/Plotly image export
+- Loading CSV/Parquet/JSON/Feather files
+- Understanding binary vs text modes for files
+- Base64 encoding (used constantly in multimodal APIs)
+- Embeddings (vector representations)
+
+🧪 Exercises
+
+- Convert a Matplotlib figure to base64 (common for agent pipelines).
+- Build a function that accepts an image + text and returns a JSON summary.
+- Read a complex folder of heterogeneous files and generate a dataset manifest.
+---
+
+MODULE 8 — Agents, Planning, and Orchestration Concepts
+
+This is the highest-level module — and the one that will matter most for your future career.
+
+🔑 Topics
+
+- Agent planning loops
+- Reflection / self-correction (ReAct, Reflexion, Tree-of-Thought)
+- Tool selection logic
+- Workflow orchestration
+- Agent memory
+- Caching & intermediate artifacts
+- DAG-based workflows (Airflow, Prefect)
+
+🧪 Exercises
+
+- Implement a tiny ReAct loop using your own Python functions.
+- Build a micro-orchestrator that decides: “Should I clean data, or visualize first?”
+- Write an agent that chooses between:
+	- summarize_data()
+	- visualize_data()
+	- train_model()
+	  based on dataset metadata.
+---
+
+MODULE 9 — Putting It All Together: Capstone Projects
+
+These are specifically chosen to mimic Genesis-style AI-for-science workflows.
+
+🔥 Capstone 1 — “Multimodal EDA Agent”
+
+Build an agent that:
+1. Accepts a CSV + text description
+2. Generates EDA plots
+3. Writes a structured report
+4. Saves logs + intermediate artifacts
+
+🔥 Capstone 2 — “Tool-Using Analysis Agent”
+
+Build an agent that can:
+- call a data-cleaning tool
+- call a feature generator
+- call a visualizer
+- call a model trainer
+- output a JSON schema summary of its steps
+
+🔥 Capstone 3 — “Scientific Data Reader Agent”
+
+Given a folder of lab/simulation outputs:
+- detect file types
+- extract data
+- run EDA
+- produce a multimodal summary
+This aligns directly with where Genesis and DOE ecosystems are headed.
+---
+
+📌 Summary: What You Should Learn First (Your Quick-Start)
+
+If you want immediate impact and to be able to read agent code quickly:
+
+Start With These (2–3 weeks):
+
+1. Clean Python architecture: modules, dataclasses, type hints
+2. Pydantic models & JSON schemas
+3. Async I/O (asyncio)
+4. Tool/function calling patterns
+5. Basic graph + search algorithms for planning
+Once you’re comfortable, expand outward into:
+- API literacy
+- concurrency
+- multimodal data handling
+- orchestration
+---
