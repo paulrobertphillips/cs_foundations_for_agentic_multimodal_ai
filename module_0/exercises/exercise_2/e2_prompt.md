@@ -163,7 +163,7 @@ I’ll walk you through fixing **both**, without needing any guesswork.
 
 ---
 
-## 1️⃣ Make sure the REPL is using your venv
+### 1️⃣ Make sure the REPL is using your venv
 
 In VS Code, in the same folder where `pyproject.toml` lives:
 
@@ -203,7 +203,7 @@ Once the REPL is definitely using the venv, we fix the second issue.
 
 ---
 
-## 2️⃣ Fix the project layout so `my_project` is actually a package
+### 2️⃣ Fix the project layout so `my_project` is actually a package
 
 Right now, you probably have something like:
 
@@ -270,7 +270,7 @@ Now `my_project` is a **real package**.
 
 ---
 
-## 3️⃣ Make sure `pyproject.toml` matches this layout
+### 3️⃣ Make sure `pyproject.toml` matches this layout
 
 At the root (same level as the `my_project/` folder), your `pyproject.toml` can stay basically as we wrote it earlier, e.g.:
 
@@ -291,7 +291,7 @@ Setuptools will now find the `my_project` package because there is a `my_project
 
 ---
 
-## 4️⃣ Reinstall in editable mode
+### 4️⃣ Reinstall in editable mode
 
 Any time you change the package layout, it’s safe to reinstall:
 
@@ -309,7 +309,7 @@ Successfully installed my-project-0.1.0
 
 ---
 
-## 5️⃣ Try the REPL import again
+### 5️⃣ Try the REPL import again
 
 Now open the Python REPL (using the venv interpreter), and run:
 
@@ -336,7 +336,7 @@ If that works, everything is wired correctly:
 
 ---
 
-## 6️⃣ Quick sanity check from anywhere
+### 6️⃣ Quick sanity check from anywhere
 
 One cool outcome of this: **from any script in that venv**, you can now do:
 
@@ -391,7 +391,7 @@ exercise_2/
 
 ---
 
-# ❌ **Incorrect location**
+### ❌ **Incorrect location**
 
 It should **not** go inside your Python package folder:
 
@@ -409,7 +409,7 @@ They serve completely different roles and should not be mixed.
 
 ---
 
-# 🧠 **What is the egg-info folder anyway?**
+### 🧠 **What is the egg-info folder anyway?**
 
 When you run:
 
@@ -434,7 +434,7 @@ This is normal and expected behavior.
 
 ---
 
-# 📦 **Why the egg-info folder belongs at the project root**
+### 📦 **Why the egg-info folder belongs at the project root**
 
 1. **Packaging tools expect it there**
    Setuptools looks for it next to `pyproject.toml` during rebuilds.
@@ -452,7 +452,7 @@ This is normal and expected behavior.
 
 ---
 
-# ⚠️ Should you commit `.egg-info` to Git?
+### ⚠️ Should you commit `.egg-info` to Git?
 
 **No. Never.**
 
@@ -470,7 +470,7 @@ This folder is:
 
 ---
 
-# 🧪 Want to verify your environment is wired correctly?
+### 🧪 Want to verify your environment is wired correctly?
 
 In your venv, run inside Python:
 
@@ -508,7 +508,7 @@ This confirms:
 
 ---
 
-# 🎉 You're Doing Everything Right
+### 🎉 You're Doing Everything Right
 
 You now fully understand:
 
