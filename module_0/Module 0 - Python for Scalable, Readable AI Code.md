@@ -412,6 +412,8 @@ A: In the backend, Python handles certain boilerplate code automatically with th
 - Basically instead of predefining the `__init__` method (e.g., what the class is going to expect to receive as values & parameters upon initializing an object instance) the parameters & values are just passed & an `__init__` method is interpreted based on how the class was called!
 - Can also make frozen (immutable) data classes by calling `@dataclass(frozen=True)` -> if a script tries to overwrite a parameter value in an object instance an error is thrown.
 
+Note: Pydantic's `.model_dump()` converts a class into a dictionary, while `.model_dump_json()` serializes it to a JSON-encoded string.
+
 </span>
 
 ---
