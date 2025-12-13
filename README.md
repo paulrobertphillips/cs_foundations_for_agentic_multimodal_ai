@@ -83,11 +83,9 @@ These rely on classic algorithms — but only a handful.
 - Trace a recursive agent-style function (“break problem into subproblems”).
 ---
 
-## ⭐ NEW MODULE 2 — Human–AI Collaboration & Prompt Engineering for Data Science
+### MODULE 2 — Human–AI Collaboration & Prompt Engineering for Data Science
 
-*(Your new module, added in the style of the original document)*
-
-Why this matters
+**Why this matters**
 
 As a data scientist collaborating with agentic and multimodal AI systems, the quality of your prompts directly determines:
 - solution relevance
@@ -117,7 +115,41 @@ Prompting is not “asking questions”—it is orchestrating an intelligent sys
 - Conduct a “design review” with AI: ask it to list assumptions, risks, and failure modes of its own proposal.
 ---
 
-### MODULE 3 — Software Engineering Patterns for AI Agents
+### MODULE 3 — Managing AI-Driven Development in Agile Systems
+
+(New module added)
+
+**Why this matters**
+
+AI is increasingly used as a development collaborator — but without structure, it can:
+- introduce uncontrolled changes
+- create hidden technical debt
+- undermine stakeholder trust
+In agile environments, AI must be managed with the same discipline as human contributors.
+This module focuses on process, governance, and iteration, not coding.
+
+🔑 Topics
+
+- AI as a junior engineer mental model
+- Separating planning from execution (refactor plans before code)
+- Sprint-to-sprint AI collaboration patterns
+- MVP-first, end-to-end delivery with AI
+- Scoping and constraining AI-driven refactors
+- Preserving interfaces, contracts, and invariants
+- Managing feedback loops (plan → implement → validate)
+- Communicating AI-driven progress to stakeholders
+- When to refactor vs when to rewrite
+
+🧪 Exercises
+
+- Review an AI-generated solution and propose a scoped refactor plan.
+- Ask AI to explain what changes and why before modifying code.
+- Simulate a sprint handoff using AI (current state → next sprint goals).
+- Identify risks in an unstructured AI-driven refactor and mitigate them.
+
+---
+
+### MODULE 4 — Software Engineering Patterns for AI Agents
 
 You don’t need full-blown SWE background, but agentic systems rely on certain patterns heavily.
 
@@ -140,7 +172,7 @@ You don’t need full-blown SWE background, but agentic systems rely on certain 
 - Add robust try/except logic to a data-cleaning script.
 ---
 
-### MODULE 4 — Data Structures Modern Agents Use
+### MODULE 5 — Data Structures Modern Agents Use
 
 Agentic and multimodal systems move data between tools and models — meaning you’ll encounter structured data models everywhere.
 
@@ -169,7 +201,7 @@ Agentic and multimodal systems move data between tools and models — meaning yo
 - Convert a nested JSON response from an LLM into dataclasses.
 ---
 
-### MODULE 5 — Concurrency & Parallelism (Agent Workflows Need This)
+### MODULE 6 — Concurrency & Parallelism (Agent Workflows Need This)
 
 Agents often:
 - run multiple tools concurrently
@@ -192,7 +224,7 @@ You don’t need deep OS theory — just operational fluency.
 - Implement a producer/consumer queue that mimics an agent receiving tasks.
 ---
 
-### MODULE 6 — API Literacy (Most Agents Are Glue Code)
+### MODULE 7 — API Literacy (Most Agents Are Glue Code)
 
 Most agent workflows talk to:
 - LLM APIs
@@ -215,7 +247,7 @@ Most agent workflows talk to:
 - Parse a complex JSON API response into structured models.
 ---
 
-### MODULE 7 — Tools & Function Calling (Core of Agent Frameworks Now)
+### MODULE 8 — Tools & Function Calling (Core of Agent Frameworks Now)
 
 Agentic AI relies heavily on tool calling, where the LLM calls a Python function with structured arguments.
 
@@ -235,7 +267,7 @@ Agentic AI relies heavily on tool calling, where the LLM calls a Python function
 - Write code that converts model-structured outputs → function arguments.
 ---
 
-### MODULE 8 — Multimodal Data Handling & I/O
+### MODULE 9 — Multimodal Data Handling & I/O
 
 Because multimodal systems deal with:
 - images
@@ -262,7 +294,7 @@ You’ll want comfort in:
 - Read a complex folder of heterogeneous files and generate a dataset manifest.
 ---
 
-### MODULE 9 — Agents, Planning, and Orchestration Concepts
+### MODULE 10 — Agents, Planning, and Orchestration Concepts
 
 This is the highest-level module — and the one that will matter most for your future career.
 
@@ -287,7 +319,7 @@ This is the highest-level module — and the one that will matter most for your 
 	  based on dataset metadata.
 ---
 
-### MODULE 10 — Putting It All Together: Capstone Projects
+### MODULE 11 — Putting It All Together: Capstone Projects
 
 These are specifically chosen to mimic Genesis-style AI-for-science workflows.
 
