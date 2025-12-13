@@ -1,6 +1,6 @@
 # cs_foundations_for_agentic_multimodal_ai
 
-***The content of this repository is a mix of generative AI content and personal notes.***
+***This repository is comprised of a mix of generative AI content and personal notes.***
 
 ---
 
