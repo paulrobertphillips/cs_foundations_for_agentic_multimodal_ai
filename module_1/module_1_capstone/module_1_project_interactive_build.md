@@ -646,3 +646,414 @@ If you want, before we do the post-capstone reflection, I can show you a *tiny r
 * `agent.py` (wiring)
 
 That would make the “at-scale” pattern extremely concrete without adding complexity.
+
+## Aligning Capstone with Common Agent Layout Design
+
+Makes total sense — and doing this refactor now is *exactly* how you build “recognizable components” that will scale as the agents get more complex.
+
+Below is a **no-behavior-change refactor** that splits your current `agent.py` into:
+
+* `planner.py` → BFS planning
+* `executor.py` → DFS execution + caching
+* `agent.py` → orchestration/wiring (calls planner + executor)
+* `main.py` → unchanged behavior, just imports from `agent`
+
+I’ll give you **copy/paste replacements**.
+
+---
+
+### 1) Updated folder structure
+
+Inside `module_1_capstone/`:
+
+```
+module_1_capstone/
+    main.py
+    agent.py
+    planner.py
+    executor.py
+    tasks.py
+    cache.py
+    models.py
+```
+
+---
+
+### 2) `planner.py` (BFS planning)
+
+Create `planner.py`:
+
+```python
+# planner.py
+from __future__ import annotations
+
+from collections import deque
+from typing import Dict, List, Set
+
+def plan_bfs(graph: Dict[str, List[str]], start: str) -> List[str]:
+    """
+    BFS traversal from a starting node.
+    Planner view: what becomes reachable next from a goal.
+    """
+    visited: Set[str] = set()
+    q = deque([start])
+    order: List[str] = []
+
+    while q:
+        node = q.popleft()
+        if node in visited:
+            continue
+
+        visited.add(node)
+        order.append(node)
+
+        for nxt in graph.get(node, []):
+            if nxt not in visited:
+                q.append(nxt)
+
+    return order
+```
+
+---
+
+### 3) `executor.py` (DFS execution + caching)
+
+Create `executor.py`:
+
+```python
+# executor.py
+from __future__ import annotations
+
+from typing import Any, Callable, Dict, List
+
+from cache import TaskCache
+
+def execute_with_cache(
+    graph: Dict[str, List[str]],
+    tasks: Dict[str, Callable[..., Dict[str, Any]]],
+    start: str,
+    cache: TaskCache,
+) -> Dict[str, Dict[str, Any]]:
+    """
+    Execute tasks using DFS-style traversal from the root, passing each task's
+    output artifact to its downstream children. Uses memoization to reuse results.
+
+    Returns: dict mapping task_name -> task_output_artifact
+    """
+    results: Dict[str, Dict[str, Any]] = {}
+
+    def make_cache_key(task_name: str, artifact_in: Dict[str, Any] | None) -> str:
+        dataset_path = artifact_in.get("dataset_path") if artifact_in else None
+        return f"{task_name}:{dataset_path or 'none'}"
+
+    def run(task_name: str, artifact_in: Dict[str, Any] | None) -> Dict[str, Any]:
+        cache_key = make_cache_key(task_name, artifact_in)
+
+        # Cache hit: reuse output, still traverse children
+        if cache.has(cache_key):
+            print(f"[CACHE HIT] {cache_key}")
+            output = cache.get(cache_key)  # type: ignore[assignment]
+
+            # Include cached outputs in results too
+            results[task_name] = output  # type: ignore[assignment]
+
+            for child in graph.get(task_name, []):
+                run(child, output)  # type: ignore[arg-type]
+
+            return output  # type: ignore[return-value]
+
+        # Execute task
+        if task_name not in tasks:
+            raise KeyError(f"No task function registered for '{task_name}'")
+
+        fn = tasks[task_name]
+        output = fn(artifact_in)
+
+        # Store result
+        cache.set(cache_key, output)
+        results[task_name] = output
+
+        # DFS to children
+        for child in graph.get(task_name, []):
+            run(child, output)
+
+        return output
+
+    run(start, None)
+    return results
+```
+
+---
+
+### 4) `agent.py` becomes orchestration glue
+
+Replace your current `agent.py` with:
+
+```python
+# agent.py
+from __future__ import annotations
+
+from typing import Any, Callable, Dict, List
+
+from cache import TaskCache
+from planner import plan_bfs
+from executor import execute_with_cache
+
+def plan(graph: Dict[str, List[str]], start: str) -> List[str]:
+    """Agent-level planning API (delegates to planner)."""
+    return plan_bfs(graph, start=start)
+
+def run(
+    graph: Dict[str, List[str]],
+    tasks: Dict[str, Callable[..., Dict[str, Any]]],
+    start: str,
+    cache: TaskCache,
+) -> Dict[str, Dict[str, Any]]:
+    """Agent-level execution API (delegates to executor)."""
+    return execute_with_cache(graph, tasks, start=start, cache=cache)
+```
+
+---
+
+### 5) Update `main.py` imports (tiny change)
+
+In `main.py`, change:
+
+```python
+from agent import plan_bfs, execute_with_cache
+```
+
+to:
+
+```python
+from agent import plan, run
+```
+
+And update the call sites:
+
+```python
+plan_list = plan(task_graph, start="prepare_dataset")
+...
+results = run(task_graph, TASKS, start="prepare_dataset", cache=cache)
+...
+results2 = run(task_graph, TASKS, start="prepare_dataset", cache=cache)
+```
+
+Everything else stays the same.
+
+---
+
+### 6) What you gain from this refactor
+
+You now have a reusable structure you’ll see again and again in “real” agent systems:
+
+* **planner** = policy/strategy (BFS today, could be heuristics/beam search later)
+* **executor** = mechanism (DFS traversal + caching + retries later)
+* **agent** = orchestration / wiring / public API
+
+This maps directly to your Module 0 mental model (“agent layer = orchestration”) while preserving Module 1 ideas (BFS/DFS/DP) in the right places.
+
+---
+
+## Add Class to Manage Reporting
+
+You’re exactly right: `models.py` was the “placeholder” where a `RunReport`-style structure belongs. Let’s wire it up cleanly now (and we’ll keep it simple + copy/paste friendly).
+
+### What we’ll add
+
+* A `RunReport` dataclass in `models.py`
+* The executor will return **(results, cache_hits, executed_order)**
+* The agent will assemble and return a `RunReport`
+* `main.py` prints the report in a stakeholder-friendly way
+
+---
+
+### Step B1 — Create `RunReport` in `models.py`
+
+Put this in `models.py`:
+
+```python
+# models.py
+from dataclasses import dataclass
+from typing import Any, Dict, List
+
+@dataclass
+class RunReport:
+    plan: List[str]
+    executed_order: List[str]
+    cache_hits: List[str]          # store cache keys like "load_data:data.csv"
+    results: Dict[str, Dict[str, Any]]
+```
+
+---
+
+### Step B2 — Update `executor.py` to collect executed order + cache hits
+
+Replace `execute_with_cache(...)` in `executor.py` with this version:
+
+```python
+# executor.py
+from __future__ import annotations
+
+from typing import Any, Callable, Dict, List, Tuple
+
+from cache import TaskCache
+
+def execute_with_cache(
+    graph: Dict[str, List[str]],
+    tasks: Dict[str, Callable[..., Dict[str, Any]]],
+    start: str,
+    cache: TaskCache,
+) -> Tuple[Dict[str, Dict[str, Any]], List[str], List[str]]:
+    """
+    Returns:
+      results: task_name -> output artifact
+      cache_hits: list of cache keys hit (task:dataset_path)
+      executed_order: list of task names visited (DFS order)
+    """
+    results: Dict[str, Dict[str, Any]] = {}
+    cache_hits: List[str] = []
+    executed_order: List[str] = []
+
+    def make_cache_key(task_name: str, artifact_in: Dict[str, Any] | None) -> str:
+        dataset_path = artifact_in.get("dataset_path") if artifact_in else None
+        return f"{task_name}:{dataset_path or 'none'}"
+
+    def run(task_name: str, artifact_in: Dict[str, Any] | None) -> Dict[str, Any]:
+        cache_key = make_cache_key(task_name, artifact_in)
+
+        # Record visit order (only once per task_name)
+        if task_name not in executed_order:
+            executed_order.append(task_name)
+
+        # Cache hit: reuse output, still traverse children
+        if cache.has(cache_key):
+            cache_hits.append(cache_key)
+            print(f"[CACHE HIT] {cache_key}")
+            output = cache.get(cache_key)  # type: ignore[assignment]
+            results[task_name] = output  # type: ignore[assignment]
+
+            for child in graph.get(task_name, []):
+                run(child, output)  # type: ignore[arg-type]
+
+            return output  # type: ignore[return-value]
+
+        # Execute task
+        if task_name not in tasks:
+            raise KeyError(f"No task function registered for '{task_name}'")
+
+        fn = tasks[task_name]
+        output = fn(artifact_in)
+
+        # Store result
+        cache.set(cache_key, output)
+        results[task_name] = output
+
+        # DFS to children
+        for child in graph.get(task_name, []):
+            run(child, output)
+
+        return output
+
+    run(start, None)
+    return results, cache_hits, executed_order
+```
+
+---
+
+### Step B3 — Update `agent.py` to return a `RunReport`
+
+Replace your `agent.py` with:
+
+```python
+# agent.py
+from __future__ import annotations
+
+from typing import Any, Callable, Dict, List
+
+from cache import TaskCache
+from planner import plan_bfs
+from executor import execute_with_cache
+from models import RunReport
+
+def plan(graph: Dict[str, List[str]], start: str) -> List[str]:
+    return plan_bfs(graph, start=start)
+
+def run(
+    graph: Dict[str, List[str]],
+    tasks: Dict[str, Callable[..., Dict[str, Any]]],
+    start: str,
+    cache: TaskCache,
+) -> RunReport:
+    plan_list = plan_bfs(graph, start=start)
+    results, cache_hits, executed_order = execute_with_cache(graph, tasks, start=start, cache=cache)
+    return RunReport(
+        plan=plan_list,
+        executed_order=executed_order,
+        cache_hits=cache_hits,
+        results=results,
+    )
+```
+
+---
+
+### Step B4 — Update `main.py` to print the report
+
+In `main.py`, replace usage of `plan(...)` and `run(...)` with this:
+
+```python
+# main.py
+from agent import run
+from cache import TaskCache
+from tasks import TASKS
+
+task_graph = {
+    "prepare_dataset": ["load_data"],
+    "load_data": ["validate_schema", "clean_missing"],
+    "validate_schema": [],
+    "clean_missing": ["compute_features"],
+    "compute_features": [],
+}
+
+def main():
+    cache = TaskCache()
+
+    print("=== Run 1 ===")
+    report1 = run(task_graph, TASKS, start="prepare_dataset", cache=cache)
+
+    print("\nPlan:")
+    for step in report1.plan:
+        print(" -", step)
+
+    print("\nExecuted order (DFS):")
+    for step in report1.executed_order:
+        print(" -", step)
+
+    print("\nCache hits:", report1.cache_hits)
+
+    print("\nResults:")
+    for k, v in report1.results.items():
+        print(f"{k}: {v}")
+
+    print("\n=== Run 2 (should hit cache) ===")
+    report2 = run(task_graph, TASKS, start="prepare_dataset", cache=cache)
+    print("Cache hits:", report2.cache_hits)
+
+    print("\n=== Summary ===")
+    print(f"Planned {len(report2.plan)} tasks. Executed {len(report2.executed_order)} tasks.")
+    print(f"Cache hits: {len(report2.cache_hits)}")
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+### What you’ll see after this
+
+* Run 1: no cache hits
+* Run 2: cache hits list populated with keys like `load_data:data.csv`
+* You’ll have a structured `RunReport` you can later extend (errors, timings, metrics, retries, etc.)
+
+---
+
