@@ -33,7 +33,7 @@ def main():
     print("\n=== Execution (DFS + Cache) ===")
     """
     Notes
-     -> Caching can be short-term memory (recursive) or long-term memory (external)
+     -> Caching can be short-term memory (in-memory) or long-term memory (external)
      -> Since caching can be long-term memory (external), needs to be passed as parameter
      -> Mapping of DAG to functions themselves has to be predefined (e.g., TASKS)
      -> Remember, what you get out of doing work is called an "artifact" -> what's tangible
