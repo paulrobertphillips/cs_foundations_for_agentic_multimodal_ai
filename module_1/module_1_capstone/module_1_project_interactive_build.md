@@ -461,4 +461,188 @@ This is the kind of line that makes sprint demos feel crisp.
 
 Once you paste the “all cache hits” output, I’ll help you do a quick final wrap-up writeup for the capstone (what you built + how it maps to Module 1 concepts).
 
+# Appendix
 
+Yep — your mental model is on point, and you’re asking exactly the “architecture” question that separates toy agents from production ones.
+
+### The short answer
+
+**In small systems (like our capstone), it’s totally normal to keep planning + execution in `agent.py`.**
+**In larger/at-scale systems, you usually *separate* them into modules/classes**, but you still keep them under the “agent layer” (or “orchestrator layer”) because that layer owns *control flow*.
+
+---
+
+## 1) Where BFS/DFS “live” conceptually
+
+Think in layers:
+
+* **Graph / State representation** (what exists): `task_graph`, nodes/edges
+* **Planning logic** (decide what to do): BFS-like (or other planners)
+* **Execution logic** (do it): DFS-like dependency resolution / traversal
+* **Caching / memory** (don’t repeat work): memoization, artifact stores
+* **Tools** (actual work): loading data, cleaning, summarizing, etc.
+
+In our capstone:
+
+* `tasks.py` = tools
+* `agent.py` = planning + execution + caching (control plane)
+* `main.py` = entry point
+
+That’s a clean “agent orchestrator owns control flow” model.
+
+---
+
+## 2) Is it common to define BFS/DFS in `agent.py`?
+
+### ✅ In prototypes and “single-agent” systems: yes
+
+It’s very common to see:
+
+* `agent.py` (or `orchestrator.py`) contains:
+
+  * plan generation
+  * task routing
+  * tool calling
+  * caching hooks
+  * retries / error policies
+
+Because the agent’s job is to coordinate.
+
+### ✅ In production: it depends on scale, but it’s still the right *layer*
+
+At scale, you’ll rarely have raw functions named `plan_bfs()` and `execute_dfs()` sitting directly in `agent.py`, but the *concept* still belongs there.
+
+Instead you’ll see patterns like:
+
+* `planner.py` (planning policy)
+* `executor.py` (execution engine)
+* `memory.py` (cache + artifact store)
+* `agent.py` (wires them together)
+
+So: **planning/execution still “live” in the agent layer**, even if the code is split across files.
+
+---
+
+## 3) Why it’s OK that planning sits next to execution (even at scale)
+
+Your Module 0 recollection is correct:
+
+> `agent.py` is orchestration.
+
+And orchestration inherently includes **both**:
+
+* *choosing a plan* (planning)
+* *running the plan* (execution)
+
+A useful analogy:
+
+* “planner” produces a route
+* “executor” drives the car
+* “agent/orchestrator” is the thing that:
+
+  * asks for a route
+  * decides whether to reroute
+  * drives
+  * stops for gas
+  * records where it’s been (memory)
+
+So it’s not weird that `agent.py` touches both — it’s natural.
+
+---
+
+## 4) The “real” distinction: policy vs mechanism
+
+This is the key architectural refinement.
+
+### Policy (what to do)
+
+* BFS vs DFS
+* heuristics
+* scoring
+* priority rules
+* constraints
+
+### Mechanism (how to do it)
+
+* queue/stack
+* retries
+* concurrency
+* caching implementation
+* tool adapters
+
+In production, you often separate:
+
+* **Planner policy** (which may *use* BFS)
+  from
+* **Execution mechanism** (which may *use* DFS)
+
+But the agent/orchestrator still owns assembling them.
+
+---
+
+## 5) Your caching intuition is correct
+
+You said:
+
+> it makes sense caching logic would live alongside where DFS logic is defined
+
+✅ Exactly.
+
+Because caching is most effective when it’s closest to the place where repeated subproblems happen. In our capstone, repeated work happens in execution traversal, so caching sits in the execution loop.
+
+At scale, you might move caching behind an interface (e.g., `ArtifactStore`, `ResultCache`), but it still integrates tightly with execution.
+
+---
+
+## 6) What “at-scale multimodal agentic systems” usually do
+
+A realistic structure you’ll commonly see is:
+
+```
+agent/
+  agent.py          # orchestration + wiring
+  planner.py        # plan generation (BFS/beam/heuristics)
+  executor.py       # task runner (DFS / topo order / async)
+  memory.py         # caches, stores, vector DB hooks
+tools/
+  io_tools.py
+  vision_tools.py
+  stats_tools.py
+models/
+  schemas.py
+```
+
+So:
+
+* BFS/DFS-like logic is still **in the agent layer**
+* but split into components for maintainability and testing
+
+---
+
+## 7) Why our capstone merged them (and why that’s good)
+
+We merged them in `agent.py` because:
+
+* it keeps the mental model tight
+* it reduces moving parts while learning
+* it makes the connection between Module 1 concepts explicit
+* it’s easier to debug
+
+Then later modules (especially orchestration / tools / concurrency) will motivate splitting them.
+
+---
+
+## Practical takeaway
+
+**Yes**, planning and execution commonly sit “together” at the agent/orchestrator layer.
+**No**, they don’t always sit in the same file in production — they’re often separated into planner/executor modules — but they remain part of the same *control plane* owned by the agent.
+
+---
+
+If you want, before we do the post-capstone reflection, I can show you a *tiny refactor* (no behavior change) that splits:
+
+* `planner.py` (BFS planning)
+* `executor.py` (DFS + cache execution)
+* `agent.py` (wiring)
+
+That would make the “at-scale” pattern extremely concrete without adding complexity.
