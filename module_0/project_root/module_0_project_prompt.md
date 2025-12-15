@@ -1,4 +1,4 @@
-# 🧠 Module 0 Capstone: The Async EDA Micro-Agent
+# 🏁  Module 0 Capstone: The Async EDA Micro-Agent
 
 
 Let’s build your Module 0 Micro-Agent Project — a small but meaningful agent that uses every concept you learned:
