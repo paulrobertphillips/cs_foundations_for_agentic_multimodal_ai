@@ -1,14 +1,10 @@
+# models.py
 from dataclasses import dataclass
-from typing import Dict, List
-
-"""
-Not actually used in this capstone project,
-but idea would be to have returned dictionaries
-from planning & executing tasks stored in class
-object.
-"""
+from typing import Any, Dict, List
 
 @dataclass
-class AgentRunResult:
-    execution_order: List[str]
-    results: Dict[str, object]
+class RunReport:
+    plan: List[str]
+    executed_order: List[str]
+    cache_hits: List[str]          # store cache keys like "load_data:data.csv"
+    results: Dict[str, Dict[str, Any]]

@@ -6,8 +6,7 @@ from typing import Any, Callable, Dict, List
 from cache import TaskCache
 from planner import plan_bfs
 from executor import execute_with_cache
-
-TaskFn = Callable[[Dict[str, Any] | None], Dict[str, Any]]
+from models import RunReport
 
 """
 Most commonly planning + execution is defined as part of agent (orchestration)
@@ -31,6 +30,12 @@ def run(
     tasks: Dict[str, Callable[..., Dict[str, Any]]],
     start: str,
     cache: TaskCache,
-) -> Dict[str, Dict[str, Any]]:
-    """Agent-level execution API (delegates to executor)."""
-    return execute_with_cache(graph, tasks, start=start, cache=cache)
+) -> RunReport:
+    plan_list = plan_bfs(graph, start=start)
+    results, cache_hits, executed_order = execute_with_cache(graph, tasks, start=start, cache=cache)
+    return RunReport(
+        plan=plan_list,
+        executed_order=executed_order,
+        cache_hits=cache_hits,
+        results=results,
+    )
