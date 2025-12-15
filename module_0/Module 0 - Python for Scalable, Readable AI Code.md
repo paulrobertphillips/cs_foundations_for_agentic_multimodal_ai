@@ -95,9 +95,11 @@ stats_app/
 ```
 
 <span style="color: blue;">
+
 Takeaway
 Project has 1 high-level folder, in that is a main.py file & program subfolders (in this case being tools which computes the stats of interest.
-</span><br>
+
+</span>
 
 <br>
 
@@ -135,13 +137,15 @@ print(compute_stats(numbers))
 ```
 
 <span style="color: blue;">
+
 Takeaway
 This is structured exactly how I do ad hoc scripting currently, but again written using more formal CS semantics.
+
 </span>
 
 ---
 
-💡 Why this matters for agentic AI
+### 💡 Why this matters for agentic AI
 
 Agent frameworks (LangChain, Autogen, CrewAI, OpenAI Swarm, etc.) expect:
 - tools in modules (e.g., tools.web_search:search_web)
@@ -151,8 +155,9 @@ You can’t scale an agent system without package structure.
 ---
 
 <span style="color: blue;">
+
 Q: What does it mean to have tools & agents in modules? Could you define what you mean by this word?<br>
-<br>
+
 
 Appendix
  - See Module 0, *What is a "module" in Python?*
@@ -192,6 +197,7 @@ This is why you often see repos like:
 /app.py
 
 ```
+
 </span>
 
 ---
@@ -274,6 +280,7 @@ pip install -r requirements.txt
 ```
 
 <span style="color: blue;">
+
 Q: Typically I use Anaconda Navigator to manage python environments in projects, what are the differences and  when is it appropriate to use one over the other?
 
 A: When you're doing heavy scientific computing (NumPy, SciPy, GPU, etc.) -> `conda` is good here
@@ -350,7 +357,7 @@ In short, the `__init__.py` file comes into play as part of the transition to vi
 
 ---
 
-💡 Why this matters for agentic AI
+### 💡 Why this matters for agentic AI
 
 Each agent might depend on:
 - different API clients
@@ -418,7 +425,7 @@ Note: Pydantic's `.model_dump()` converts a class into a dictionary, while `.mod
 
 ---
 
-💡 Why this matters
+### 💡 Why this matters
 
 Agent frameworks often require:
 - structured definitions
@@ -551,7 +558,7 @@ A: `BaseModel` feels like a `@dataclass` , but it's not literally using `@datacl
 
 ---
 
-💡 Why this matters
+### 💡 Why this matters
 
 Agents exchange structured data, e.g.:
 - user messages
@@ -828,7 +835,7 @@ asyncio.run(main())
 
 ---
 
-💡 Why this matters for agentic AI
+### 💡 Why this matters for agentic AI
 
 Most agent frameworks use async patterns:
 - multiple tools invoked at once
