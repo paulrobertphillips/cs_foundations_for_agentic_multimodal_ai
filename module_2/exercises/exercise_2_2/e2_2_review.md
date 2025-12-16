@@ -125,5 +125,3 @@ You now have a reusable pattern:
 This is the backbone of AI-assisted agile development.
 
 ---
-
-If you’re ready, we’ll move to:
