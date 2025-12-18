@@ -4,7 +4,7 @@ A few targeted notes to make these prompts even more “production-safe” (and 
 
 ---
 
-## Planning Prompt Review
+# Planning Prompt Review
 
 ### What’s great ✅
 
@@ -115,7 +115,7 @@ Your constraints already reduce this a lot; the “no extra deps / no architectu
 
 ---
 
-# ✅ Module 2.2 complete
+## ✅ Module 2.2 complete
 
 You now have a reusable pattern:
 
