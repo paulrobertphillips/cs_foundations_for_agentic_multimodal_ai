@@ -300,12 +300,4 @@ And yes — this fits *perfectly* with Module 2’s philosophy.
 
 ---
 
-If you want, next we can:
-
-* fold this into a **standard Module 2 capstone artifact**
-* create a **one-page AI review report checklist**
-* or move cleanly into **Module 3** now that you’ve closed the loop from planning → execution → review → documentation
-
-Just tell me how you’d like to proceed.
-
 
