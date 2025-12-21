@@ -552,7 +552,7 @@ A: Recursion is not ideal when
 A concrete example (no code yet)
 
 **High-level goal**
-| “Prepare dataset for modeling” 
+> “Prepare dataset for modeling” 
 
 **Decomposed into subproblems**
 - Load data
@@ -623,7 +623,7 @@ What it’s actually doing is:
 #### 🔹 3. Tool decomposition
 
 Agents often turn one request into many tool calls:
-| “Analyze dataset”→ load data→ profile schema→ compute stats→ generate plots
+> “Analyze dataset”→ load data→ profile schema→ compute stats→ generate plots
 
 Each tool call is a subproblem.
 
@@ -691,7 +691,7 @@ Agents use memoization to:
 - cache expensive computations
 
 The key idea:
-| **Store results of expensive calls so you never compute them twice.**
+> **Store results of expensive calls so you never compute them twice.**
 
 ---
 
@@ -708,7 +708,7 @@ For agents, DP is less about math and more about:
 - **result reuse**
 
 In other words:
-| “If I’ve already figured this out once, don’t make me think about it again.”
+> “If I’ve already figured this out once, don’t make me think about it again.”
 
 ---
 
@@ -735,7 +735,7 @@ Dynamic programming is what makes **deep reasoning feasible**.
 ### 3️⃣ What “Caching” Means in Agentic Systems
 
 Caching is simply:
-| **A mapping from “problem state” → “known result”**
+> **A mapping from “problem state” → “known result”**
 
 In code terms:
 ```
@@ -892,7 +892,7 @@ With caching:
 This is why DP and DFS are paired conceptually.
 
 In agent terms:
-| **DFS explores; DP remembers.**
+> **DFS explores; DP remembers.**
 
 ---
 
