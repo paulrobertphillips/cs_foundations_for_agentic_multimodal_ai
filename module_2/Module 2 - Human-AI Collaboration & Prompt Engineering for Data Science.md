@@ -7,7 +7,9 @@ Each submodule follows:
 2. Concrete example
 3. Why this matters for AI-driven data science
 4. Mini-exercise
+
 You’ll notice this module feels less like algorithms and more like systems engineering + project management, but it’s every bit as technical.
+
 ---
 
 ## 🔹 Module 2.1 — AI as a Junior Engineer (Mental Model)
