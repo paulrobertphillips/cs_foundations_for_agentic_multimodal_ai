@@ -1,8 +1,3 @@
-Perfect — let’s lock this in and close out **Module 2** cleanly.
-This mini-exercise is about **turning AI-assisted work into something you can confidently ship and defend**.
-
----
-
 # 🧪 **Module 2.5 — Mini-Exercise**
 
 ## Task Context (given)
