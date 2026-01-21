@@ -1,5 +1,5 @@
 **Planning Prompt**
-```haskell
+```
 You are acting as a junior data engineer.
 
 Goal:
@@ -18,7 +18,7 @@ Stop after the plan and wait for approval.
 ```
 
 **Execution Prompt**
-```haskell
+```
 Using the previously approved plan:
 
 Current task:
