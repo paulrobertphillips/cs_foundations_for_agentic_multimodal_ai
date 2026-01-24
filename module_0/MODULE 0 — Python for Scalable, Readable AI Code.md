@@ -16,16 +16,8 @@ Even before CS concepts, agentic systems rely heavily on clean, modular Python.
 - Rewrite a small script you’ve written using functions + modules.
 - Convert a data-cleaning script to async I/O for file/database reads.
 - Wrap an object using @dataclass to store parameters for a pipeline.
----
-Great — let’s begin Module 0: Python for Scalable, Readable AI Code, and we’ll do it example-first, as you requested.
-This lesson is structured as:
-1. Concept → Example
-2. Why it matters for agentic / multimodal AI
-3. Mini-exercise (with solution available on request)
----
 
 ## 🔹 Module 0.1 — Python Packaging Basics
-
 
 (`__init__.py`, modules, imports)
 Agentic systems are built as collections of cooperating components, not single scripts. Packaging is what allows that.

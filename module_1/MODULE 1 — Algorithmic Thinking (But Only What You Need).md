@@ -1,8 +1,8 @@
-# 🎓 MODULE 1 — Algorithmic Thinking for Agentic AI
-
+# MODULE 1 — Algorithmic Thinking for Agentic AI
 
 Agentic systems plan, search, reason, and navigate tasks.
 This module gives you the core CS mental models behind those behaviors.
+
 ---
 
 ## Module 1.1 — Time & Space Complexity (Intuition Only)
@@ -80,10 +80,10 @@ Your task:
 1. Generate the sequences using loops
 2. Print all sequences
 3. Print how many there are
+
 ---
 
 ## Module 1.2 — Graphs & Trees (Core Data Structures for Agents)
-
 
 ### ✅ Concept
 
