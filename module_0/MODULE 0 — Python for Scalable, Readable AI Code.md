@@ -1,7 +1,3 @@
-
-
----
-
 # MODULE 0 — Your Baseline: Python for Scalable, Readable AI Code
 
 Even before CS concepts, agentic systems rely heavily on clean, modular Python.
@@ -28,7 +24,7 @@ This lesson is structured as:
 3. Mini-exercise (with solution available on request)
 ---
 
-## Module 0.1 — Python Packaging Basics
+## 🔹 Module 0.1 — Python Packaging Basics
 
 
 (`__init__.py`, modules, imports)
@@ -228,7 +224,7 @@ Done. Make sure to add """Short description""" to each function.
 
 ---
 
-## Module 0.2 — Virtual Environments & Dependency Management
+## 🔹 Module 0.2 — Virtual Environments & Dependency Management
 
 (`venv`, `pip`, `pyproject.toml`)
 This is about isolating your project, especially tools that call APIs.
@@ -366,7 +362,7 @@ Each agent might depend on:
 A clean venv ensures isolation + reproducibility.
 ---
 
-## Module 0.3 — Dataclasses
+## 🔹 Module 0.3 — Dataclasses
 
 Super useful for agent configurations, messages, and tool definitions.
 
@@ -442,7 +438,7 @@ Create a @dataclass called DatasetInfo that stores:
 - source_url (optional str, default None)
 ---
 
-## Module 0.4 — Type Hints + Pydantic Models
+## 🔹 Module 0.4 — Type Hints + Pydantic Models
 
 Type hints = clarity + IDE help
 Pydantic = validation for agent messages & tool inputs
@@ -567,7 +563,7 @@ Agents exchange structured data, e.g.:
 In modern agent frameworks, Pydantic is a first-class citizen.
 ---
 
-## Module 0.5 — Async Programming
+## 🔹 Module 0.5 — Async Programming
 
 Agentic systems frequently:
 - call APIs
@@ -609,11 +605,9 @@ await asyncio.gather(
 
 ```
 
-
-
 ---
 
-## 🔬 How AI Systems Use This Combo (Real Examples)
+### 🔬 How AI Systems Use This Combo (Real Examples)
 
 
 **✔️ LLM Serving**
@@ -638,7 +632,7 @@ Async inside each worker → asyncio-based request handling
 
 ---
 
-## 🧩 Tiny concrete example
+### 🧩 Tiny concrete example
 
 **Synchronous version**
 
@@ -746,7 +740,7 @@ Process B:
 
 ---
 
-## 🧪 Mini-Exercise 0.5
+### 🧪 Mini-Exercise 0.5
 
 Let’s do a quick async practice tailored to your context.
 Goal: simulate running 3 model evaluations in parallel.
@@ -793,7 +787,7 @@ If you’d like, you can:
 Either way, you’re doing really solid work here.
 ---
 
-## 📌 Example: synchronous vs async API call
+### 📌 Example: synchronous vs async API call
 
 
 **❌ Synchronous**
@@ -846,7 +840,6 @@ If you know async, you can build much more powerful agents.
 ---
 
 ## 🧠 Module 0 Capstone: The Async EDA Micro-Agent
-
 
 Let’s build your Module 0 Micro-Agent Project — a small but meaningful agent that uses every concept you learned:
 - Python packaging & modules
@@ -914,9 +907,10 @@ class AgentConfig:
 
 ```
 This matches how agent configurations are stored in LangChain, Autogen, Swarm, etc.
+
 ---
 
-## 🔧 2. Define Pydantic Result Models
+### 🔧 2. Define Pydantic Result Models
 
 **my_agent/models.py**
 ```
