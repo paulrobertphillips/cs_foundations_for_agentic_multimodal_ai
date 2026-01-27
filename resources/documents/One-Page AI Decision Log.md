@@ -24,8 +24,8 @@ Below is a **one-page, checklist-style Decision Log** that matches the tone, den
 * **Decision Date:**
 * **Decision Owner (Human):**
 
-☐ Ownership of this decision is explicitly assigned
-☐ Decision was made with human approval
+[] Ownership of this decision is explicitly assigned
+[] Decision was made with human approval
 
 ---
 
@@ -37,8 +37,8 @@ Below is a **one-page, checklist-style Decision Log** that matches the tone, den
 [Clear statement of the decision that was made]
 ```
 
-☐ Decision is stated in plain language
-☐ Decision describes *what*, not *how*
+[] Decision is stated in plain language
+[] Decision describes *what*, not *how*
 
 **Good example**
 
@@ -54,12 +54,12 @@ Below is a **one-page, checklist-style Decision Log** that matches the tone, den
 
 **Primary reason(s):**
 
-☐ Correctness
-☐ Reproducibility
-☐ Maintainability
-☐ Performance
-☐ Risk reduction
-☐ Other: ________
+[] Correctness
+[] Reproducibility
+[] Maintainability
+[] Performance
+[] Risk reduction
+[] Other: ________
 
 **Explanation:**
 
@@ -67,15 +67,15 @@ Below is a **one-page, checklist-style Decision Log** that matches the tone, den
 [Brief justification linking decision to sprint goals]
 ```
 
-☐ Rationale aligns with sprint intent
-☐ Tradeoffs were considered
+[] Rationale aligns with sprint intent
+[] Tradeoffs were considered
 
 ---
 
 ## 4. Assumptions Introduced or Reinforced
 
-☐ This decision introduces new assumptions
-☐ This decision reinforces existing assumptions
+[] This decision introduces new assumptions
+[] This decision reinforces existing assumptions
 
 List assumptions explicitly:
 
@@ -84,17 +84,17 @@ List assumptions explicitly:
 - …
 ```
 
-☐ Assumptions are visible to future contributors
-☐ Assumptions are not implicit or hidden in code
+[] Assumptions are visible to future contributors
+[] Assumptions are not implicit or hidden in code
 
 ---
 
 ## 5. Scope & Impact Assessment
 
-☐ Affects behavior
-☐ Affects interfaces
-☐ Affects data assumptions
-☐ Affects downstream components
+[] Affects behavior
+[] Affects interfaces
+[] Affects data assumptions
+[] Affects downstream components
 
 **Blast radius description:**
 
@@ -102,15 +102,15 @@ List assumptions explicitly:
 [Which modules / steps are affected]
 ```
 
-☐ Impact is localized
-☐ Rollback cost is understood
+[] Impact is localized
+[] Rollback cost is understood
 
 ---
 
 ## 6. Alternatives Considered (Optional but Recommended)
 
-☐ Alternatives were considered
-☐ Alternatives were rejected for valid reasons
+[] Alternatives were considered
+[] Alternatives were rejected for valid reasons
 
 ```
 - Option considered:
@@ -123,20 +123,20 @@ This section prevents future re-litigation of the same decision.
 
 ## 7. AI Involvement Disclosure
 
-☐ AI assisted in analysis or proposal
-☐ AI assisted in execution
-☐ AI was used only as a reviewer
+[] AI assisted in analysis or proposal
+[] AI assisted in execution
+[] AI was used only as a reviewer
 
-☐ AI did not make the final decision
-☐ Human owner approved the final decision
+[] AI did not make the final decision
+[] Human owner approved the final decision
 
 ---
 
 ## 8. Validation & Evidence
 
-☐ Tests updated
-☐ Existing tests sufficient
-☐ Manual validation performed
+[] Tests updated
+[] Existing tests sufficient
+[] Manual validation performed
 
 Evidence:
 
@@ -145,15 +145,15 @@ Evidence:
 - Validation notes:
 ```
 
-☐ Validation supports the decision’s safety
+[] Validation supports the decision’s safety
 
 ---
 
 ## 9. Decision Status
 
-☐ Accepted
-☐ Time-boxed (to be revisited)
-☐ Superseded (link to newer decision)
+[] Accepted
+[] Time-boxed (to be revisited)
+[] Superseded (link to newer decision)
 
 If time-boxed, review date:
 
@@ -165,8 +165,8 @@ If time-boxed, review date:
 
 ## 10. Acknowledgment
 
-☐ This decision is intentional and documented
-☐ Future changes must explicitly revisit this decision
+[] This decision is intentional and documented
+[] Future changes must explicitly revisit this decision
 
 * **Decision Owner:**
 * **Reviewer(s):**

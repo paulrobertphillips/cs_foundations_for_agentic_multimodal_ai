@@ -15,114 +15,114 @@ You can think of this as the *minimum viable governance layer* for AI-assisted e
 
 ## 1️⃣ Review Context (Required)
 
-☐ Review type clearly stated
+[] Review type clearly stated
     Examples: refactor, bug fix, feature addition, integration change
 
-☐ Scope explicitly defined
+[] Scope explicitly defined
     What files / components were reviewed
 
-☐ Out-of-scope items explicitly listed
+[] Out-of-scope items explicitly listed
     What was *not* reviewed or intentionally excluded
 
-☐ AI role declared
+[] AI role declared
     Example: “AI acting as constrained reviewer”
 
 ---
 
 ## 2️⃣ Inputs Reviewed (Evidence)
 
-☐ Code files listed
+[] Code files listed
     Exact filenames or modules
 
-☐ Tests reviewed or executed
+[] Tests reviewed or executed
     Test names or test suite
 
-☐ Reference artifacts included
+[] Reference artifacts included
     Sprint plan, refactor plan, design notes (if applicable)
 
-☐ Inputs are complete
+[] Inputs are complete
     No undocumented assumptions about missing context
 
 ---
 
 ## 3️⃣ Review Checks Performed
 
-☐ Scope adherence verified
+[] Scope adherence verified
     No work outside approved sprint/refactor plan
 
-☐ Behavior preservation confirmed (if applicable)
+[] Behavior preservation confirmed (if applicable)
     Same inputs → same outputs
 
-☐ Public interfaces checked
+[] Public interfaces checked
     Function signatures, schemas, contracts unchanged
 
-☐ Dependency changes checked
+[] Dependency changes checked
     No new dependencies unless approved
 
-☐ Configuration / invocation unchanged (if relevant)
+[] Configuration / invocation unchanged (if relevant)
 
 ---
 
 ## 4️⃣ Test Evidence
 
-☐ Tests executed (Yes / No)
+[] Tests executed (Yes / No)
 
-☐ Test results recorded
+[] Test results recorded
     Passed: ___
     Failed: ___
 
-☐ New tests added?
+[] New tests added?
     If yes, list them
     If no, explicitly state “None”
 
-☐ Known untested cases acknowledged
+[] Known untested cases acknowledged
 
 ---
 
 ## 5️⃣ Behavior & Interface Verification
 
-☐ Input formats unchanged
+[] Input formats unchanged
 
-☐ Output formats unchanged
+[] Output formats unchanged
 
-☐ Data contracts preserved
+[] Data contracts preserved
 
-☐ Error behavior unchanged (unless explicitly scoped)
+[] Error behavior unchanged (unless explicitly scoped)
 
-☐ Downstream consumers unaffected
+[] Downstream consumers unaffected
 
 ---
 
 ## 6️⃣ Findings Summary
 
-☐ Confirmed safe changes listed
+[] Confirmed safe changes listed
     (What *did* change)
 
-☐ Issues identified (if any)
+[] Issues identified (if any)
     Or explicitly state “None observed”
 
-☐ Claims backed by evidence
+[] Claims backed by evidence
     No unsupported assertions
 
 ---
 
 ## 7️⃣ Risk Assessment
 
-☐ Overall risk level stated
+[] Overall risk level stated
     Low / Medium / High
 
-☐ Rationale provided
+[] Rationale provided
     Why this risk level is appropriate
 
-☐ Mitigations identified (if needed)
+[] Mitigations identified (if needed)
 
-☐ Remaining unknowns acknowledged
+[] Remaining unknowns acknowledged
 
 ---
 
 ## 8️⃣ Review Limitations (Required)
 
-☐ Explicit statement of what this review does **not** guarantee
+[] Explicit statement of what this review does **not** guarantee
 
 Examples:
 
@@ -130,19 +130,19 @@ Examples:
 * Production environment behavior not tested
 * Edge cases outside test coverage
 
-☐ No false sense of certainty conveyed
+[] No false sense of certainty conveyed
 
 ---
 
 ## 9️⃣ Final Sanity Check
 
-☐ Review output is factual, not speculative
+[] Review output is factual, not speculative
 
-☐ No refactor or improvement suggestions slipped in
+[] No refactor or improvement suggestions slipped in
 
-☐ Language is conservative and review-appropriate
+[] Language is conservative and review-appropriate
 
-☐ A human could defend this review to a stakeholder
+[] A human could defend this review to a stakeholder
 
 ---
 
