@@ -1,10 +1,3 @@
-Perfect — this is the **right order**.
-If the Sprint Scope Contract is the *entry gate*, the **Decision Log** is the *memory* that prevents slow, silent drift.
-
-Below is a **one-page, checklist-style Decision Log** that matches the tone, density, and intent of your other artifacts.
-
----
-
 # 📄 **One-Page AI Decision Log**
 
 > **Purpose**
