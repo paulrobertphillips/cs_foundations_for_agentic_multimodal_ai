@@ -2,6 +2,7 @@ Sprint 1:
 AI allowed: write feature engineering function with fixed schema.
 AI forbidden: model selection, evaluation metric choice.
 Human owner: decide whether to implement AI-recommended feature engineering approach.
+
 Sprint 2:
 AI allowed: refactor code to reduce duplication and improve maintainability.
 AI forbidden: change functional behavior of existing code, suggest overall pipeline design improvements.
